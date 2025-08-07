@@ -5,6 +5,7 @@ import { coursesTable } from '@/config/schema';
 import { db } from '@/config/db';
 import { eq } from 'drizzle-orm';
 
+// Prompt for Gemini
 const PROMPT = `
 You are a course content generator.
 
@@ -25,12 +26,10 @@ Respond with JSON only. Don't use \\\` or markdown or add extra text.
 User Input:
 `;
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-});
-
+// YouTube API base URL
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
+// ✅ Helper to fetch videos from YouTube
 const GetYoutubeVideo = async (topic) => {
   try {
     const params = {
@@ -52,6 +51,7 @@ const GetYoutubeVideo = async (topic) => {
   }
 };
 
+// ✅ Clean JSON from Gemini's raw response
 function extractJsonFromText(text) {
   try {
     const cleaned = text.replace(/json|```/gi, '').trim();
@@ -67,7 +67,13 @@ function extractJsonFromText(text) {
   return null;
 }
 
+// ✅ Generates topic content for a chapter using Gemini
 async function generateChapterContent(chapter, retries = 1) {
+  // ✅ Move `ai` inside the function (this is the fix!)
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+  });
+
   const model = 'gemini-2.5-pro';
   const config = {
     thinkingConfig: { thinkingBudget: -1 },
@@ -101,6 +107,7 @@ async function generateChapterContent(chapter, retries = 1) {
   return null;
 }
 
+// ✅ API handler
 export async function POST(req) {
   try {
     const { courseJson, courseTitle, courseId } = await req.json();
