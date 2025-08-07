@@ -1,8 +1,10 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { UserButton, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { useUser, UserButton, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const courses = [
   {
@@ -28,6 +30,17 @@ const courses = [
 ];
 
 export default function LandingPage() {
+  const { user } = useUser();
+  const router = useRouter();
+
+  const handleProtectedRoute = (route) => {
+    if (user) {
+      router.push(route);
+    } else {
+      router.push(`/sign-in?redirect_url=${route}`);
+    }
+  };
+
   return (
     <div className="font-sans scroll-smooth bg-white text-gray-800">
       {/* Navbar */}
@@ -59,11 +72,12 @@ export default function LandingPage() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="/workspace">
-              <button className="bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700 transition shadow-md">
-                Launch App
-              </button>
-            </Link>
+            <button
+              onClick={() => handleProtectedRoute("/workspace")}
+              className="bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700 transition shadow-md"
+            >
+              Launch App
+            </button>
 
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
@@ -90,16 +104,18 @@ export default function LandingPage() {
               Welcome to GrowGuide — a dynamic AI-powered platform where you can create and explore courses effortlessly with the help of Google Gemini AI.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/workspace/explore">
-                <button className="bg-white text-purple-700 px-6 py-3 rounded-md font-semibold hover:bg-purple-100 transition">
-                  🚀 Explore Courses
-                </button>
-              </Link>
-              <Link href="/workspace/my-learning">
-                <button className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-purple-700 transition font-semibold">
-                  🎓 My Learning
-                </button>
-              </Link>
+              <button
+                onClick={() => handleProtectedRoute("/workspace/explore")}
+                className="bg-white text-purple-700 px-6 py-3 rounded-md font-semibold hover:bg-purple-100 transition"
+              >
+                🚀 Explore Courses
+              </button>
+              <button
+                onClick={() => handleProtectedRoute("/workspace/my-learning")}
+                className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-purple-700 transition font-semibold"
+              >
+                🎓 My Learning
+              </button>
             </div>
           </div>
           <div className="md:w-1/2">
@@ -218,15 +234,9 @@ export default function LandingPage() {
           <div>
             <h5 className="font-bold mb-2">Navigation</h5>
             <ul className="space-y-1">
-              <li>
-                <a href="#features" className="hover:underline">Features</a>
-              </li>
-              <li>
-                <a href="#courses" className="hover:underline">Courses</a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:underline">Testimonials</a>
-              </li>
+              <li><a href="#features" className="hover:underline">Features</a></li>
+              <li><a href="#courses" className="hover:underline">Courses</a></li>
+              <li><a href="#testimonials" className="hover:underline">Testimonials</a></li>
             </ul>
           </div>
           <div>
