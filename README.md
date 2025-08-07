@@ -63,12 +63,6 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 cumentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## 🚀 Live Demo
-
-See GrowGuide in action here:  
-**[https://growguide-eight.vercel.app/](https://growguide-eight.vercel.app/)**
-
-
 ## Learn More
 
 To learn more about Next.js and the stack, check out the following:
