@@ -33,43 +33,6 @@ GrowGuide aims to make quality education accessible, personalized, and interacti
 - Responsive, animated UI via Tailwind CSS
 - Dynamic course pages and intuitive sidebar navigation
 
-## Folder Structure
-```growguide/
-│
-├── app/                                # Next.js app directory (routes & pages)
-│   ├── _components/                    # Shared/page-level React components (CourseCard, Sidebar, etc.)
-│   ├── api/                            # API route handlers (generate-course-layout, enroll-course, etc.)
-│   ├── workspace/                      # Authenticated workspace area
-│   │   ├── _components/                # Workspace-specific components (AppHeader, AppSidebar, WelcomeBanner, etc.)
-│   │   ├── my-learning/                # "My Learning" user courses
-│   │   │   └── page.jsx
-│   │   ├── explore/                    # Courses exploration area
-│   │   ├── ai-tools/                   # AI-powered tools section
-│   │   ├── profile/                    # User profile page
-│   │   └── layout.jsx                  # Layout for workspace section
-│   ├── page.jsx                        # Landing page (public home)
-│   └── layout.jsx                      # App-wide layout and providers
-│
-├── context/                            # React Context providers (SelectedChapterIndexContext, etc.)
-│
-├── db/                                 # Database setup (Drizzle schema, migrations)
-│   └── schema.js
-│
-├── public/                             # Static assets (images, icons, og-images)
-│   └── default-thumbnail.jpg
-│
-├── styles/                             # Tailwind config & global CSS
-│   └── globals.css
-│
-├── .env.local                          # Environment variables (never commit!)
-├── package.json                        # Project dependencies and scripts
-├── tailwind.config.js                  # Tailwind CSS configuration
-├── next.config.js                      # Next.js configuration
-├── README.md                           # This documentation
-└── ...                                 # (Other config and helper files as needed)
-```
-
-
 First, clone this repo and install dependencies:
 
 First, run the development server:
