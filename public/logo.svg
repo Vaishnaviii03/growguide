@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="45" viewBox="0 0 250 45" fill="none">
+  <!-- Wrap icon and text in a <g> and center it manually -->
+  <g transform="translate(10, 10)">
+    <!-- Book Icon -->
+    <path d="M0 5 Q10 -5, 20 5 L20 25 Q10 15, 0 25 Z" fill="white" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M20 5 Q30 -5, 40 5 L40 25 Q30 15, 20 25 Z" fill="white" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="20" y1="5" x2="20" y2="25" stroke="#000" stroke-width="1.5"/>
+
+    <!-- GrowGuide text (visually centered to icon) -->
+    <text x="50" y="21" font-family="Arial Black" font-size="26" fill="#000">
+      GrowGuide
+    </text>
+  </g>
+</svg>

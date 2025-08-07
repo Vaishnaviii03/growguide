@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background (for contrast) -->
+  <rect width="64" height="64" rx="8" fill="#f0fdfa"/>
+
+  <!-- Full-Fit Open Book -->
+  <path d="M8 16 Q20 8, 32 16 Q44 8, 56 16 L56 48 Q44 56, 32 48 Q20 56, 8 48 Z"
+        fill="#ffffff" stroke="#4b5563" stroke-width="1.5"/>
+
+  <!-- Page Shadows -->
+  <path d="M8 16 Q20 18, 32 24 Q20 30, 8 32 Z" fill="#e5e7eb" opacity="0.25"/>
+  <path d="M56 16 Q44 18, 32 24 Q44 30, 56 32 Z" fill="#e5e7eb" opacity="0.25"/>
+
+  <!-- Spine Shadow -->
+  <rect x="31" y="16" width="2" height="32" fill="#d1d5db"/>
+
+  <!-- Left Page Lines -->
+  <g stroke="#d1d5db" stroke-width="0.6">
+    <line x1="10" y1="24" x2="30" y2="24"/>
+    <line x1="10" y1="28" x2="30" y2="28"/>
+    <line x1="10" y1="32" x2="30" y2="32"/>
+    <line x1="10" y1="36" x2="30" y2="36"/>
+    <line x1="10" y1="40" x2="30" y2="40"/>
+    <line x1="10" y1="44" x2="30" y2="44"/>
+  </g>
+
+  <!-- Right Page Lines -->
+  <g stroke="#d1d5db" stroke-width="0.6">
+    <line x1="34" y1="24" x2="54" y2="24"/>
+    <line x1="34" y1="28" x2="54" y2="28"/>
+    <line x1="34" y1="32" x2="54" y2="32"/>
+    <line x1="34" y1="36" x2="54" y2="36"/>
+    <line x1="34" y1="40" x2="54" y2="40"/>
+    <line x1="34" y1="44" x2="54" y2="44"/>
+  </g>
+
+  <!-- GG Branding Text -->
+  <text x="32" y="38" font-size="14" font-family="Georgia" font-weight="bold" text-anchor="middle" fill="#10b981">
+    GG
+  </text>
+</svg>
