@@ -34,7 +34,7 @@ GrowGuide aims to make quality education accessible, personalized, and interacti
 - Dynamic course pages and intuitive sidebar navigation
 
 ## Folder Structure
-growguide/
+```growguide/
 │
 ├── app/                                # Next.js app directory (routes & pages)
 │   ├── _components/                    # Shared/page-level React components (CourseCard, Sidebar, etc.)
@@ -67,6 +67,7 @@ growguide/
 ├── next.config.js                      # Next.js configuration
 ├── README.md                           # This documentation
 └── ...                                 # (Other config and helper files as needed)
+```
 
 
 First, clone this repo and install dependencies:
