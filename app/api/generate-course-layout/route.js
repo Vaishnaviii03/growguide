@@ -1,3 +1,5 @@
+// app/api/generate-course-layout/route.js
+
 import axios from 'axios';
 import { db } from '@/config/db';
 import { coursesTable } from '@/config/schema';
@@ -5,7 +7,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
 
-// 📘 Prompt to instruct Gemini to return course structure
+// 📘 Prompt for Gemini
 const PROMPT = `
 Generate a Learning Course based on the following user details. Return the result strictly in JSON format using this schema:
 
@@ -32,7 +34,7 @@ Generate a Learning Course based on the following user details. Return the resul
 Now generate a course based on this input:
 `;
 
-// ✅ Image Generation Function
+// ✅ Image Generation Helper
 const GenerateImage = async (imagePrompt) => {
   const BASE_URL = 'https://aigurulab.tech';
 
@@ -62,13 +64,12 @@ const GenerateImage = async (imagePrompt) => {
   }
 };
 
-// ✅ API Route: POST Handler
+// ✅ POST Route Handler
 export async function POST(req) {
   try {
     const { courseId, ...formData } = await req.json();
     const user = await currentUser();
 
-    // ✅ Move AI instance INSIDE function
     const ai = new GoogleGenAI({
       apiKey: process.env.GEMINI_API_KEY,
     });
@@ -117,7 +118,6 @@ export async function POST(req) {
     const ImagePrompt = JSONResp?.course?.bannerImagePrompt || 'An educational modern banner';
     const bannerImageUrl = await GenerateImage(ImagePrompt);
 
-    // ✅ Save course to DB
     await db.insert(coursesTable).values({
       ...formData,
       courseJson: JSONResp,
